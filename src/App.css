@@ -14,7 +14,7 @@
 }
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: #fff;
@@ -22,7 +22,7 @@ body {
 }
 
 a {
-  color: var(--primary-color);
+  color: rgb(1, 104, 1);
   text-decoration: none;
 }
 
@@ -67,7 +67,7 @@ img {
 }
 
 .text-primary {
-  color: var(--primary-color);
+  color: rgb(1, 104, 1);
 }
 
 .text-dark {
@@ -160,7 +160,7 @@ img {
 .bg-primary,
 .badge-primary,
 .alert-primary {
-  background: var(--primary-color);
+  background: rgb(1, 104, 1);
   color: #fff;
 }
 
@@ -240,27 +240,37 @@ img {
 }
 
 .form .form-text {
-  display: block;
+  /* display: block; */
   margin-top: 0.3rem;
-  color: #888;
+  color: rgb(255, 254, 254);
+  position: relative;
+  left: 27%;
 }
 
-.form input[type='text'],
-.form input[type='email'],
-.form input[type='password'],
-.form input[type='date'],
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="date"],
 .form select,
 .form textarea {
   display: block;
-  width: 100%;
+  position: relative;
+  left: 27%;
+  width: 50%;
   padding: 0.4rem;
   font-size: 1.2rem;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid rgb(8, 175, 72);
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
-.form input[type='submit'],
+.form input[type="submit"],
 button {
   font: inherit;
+  margin-top: 2rem;
+  position: relative;
+  left: 45%;
 }
 
 .form .social-input {
@@ -272,26 +282,10 @@ button {
   width: 4rem;
 }
 
-.form .social-input i.fa-twitter {
-  color: #38a1f3;
-}
-.form .social-input i.fa-facebook {
-  color: #3b5998;
-}
-.form .social-input i.fa-instagram {
-  color: #3f729b;
-}
-.form .social-input i.fa-youtube {
-  color: #c4302b;
-}
-.form .social-input i.fa-linkedin {
-  color: #0077b5;
-}
-
 .table th,
 .table td {
   padding: 1rem;
-  text-align: left;
+  text-align: c;
 }
 
 .table th {
@@ -308,8 +302,9 @@ button {
   z-index: 1;
   width: 100%;
   top: 0;
-  border-bottom: solid 1px var(--primary-color);
+  /* border-bottom: solid 1px green; */
   opacity: 0.9;
+  background-color: rgb(48, 88, 29);
 }
 
 .navbar ul {
@@ -317,13 +312,13 @@ button {
 }
 
 .navbar a {
-  color: #fff;
+  color: rgb(255, 255, 255);
   padding: 0.45rem;
   margin: 0 0.25rem;
 }
 
 .navbar a:hover {
-  color: var(--primary-color);
+  color: rgb(35, 170, 35);
 }
 
 .navbar .welcome span {
@@ -333,7 +328,8 @@ button {
 /* Landing Page */
 .landing {
   position: relative;
-  background: url('./img/showcase.jpg') no-repeat center center/cover;
+  background: url("./img/pexels-photo-4342427.jpeg") no-repeat center
+    center/cover;
   height: 100vh;
 }
 
@@ -364,10 +360,10 @@ button {
 .profile-grid {
   display: grid;
   grid-template-areas:
-    'top top'
-    'about about'
-    'exp edu'
-    'github github';
+    "top top"
+    "about about"
+    "exp edu"
+    "github github";
   grid-gap: 1rem;
 }
 
@@ -378,10 +374,15 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
+  color: rgb(0, 14, 5);
+  background: url("./img/sky-space-dark-galaxy.jpg") no-repeat center
+    center/cover;
 }
 
 .profile-top img {
-  width: 250px;
+  width: 200px;
+  height: 300px;
+  border-radius: 50%;
 }
 
 .profile-top .icons a {
@@ -396,6 +397,7 @@ button {
 .profile-about {
   grid-area: about;
   text-align: center;
+  background-color: rgba(153, 161, 156, 0.74);
 }
 
 .profile-about .skills {
@@ -407,10 +409,12 @@ button {
 
 .profile-exp {
   grid-area: exp;
+  background-color: rgba(153, 161, 156, 0.74);
 }
 
 .profile-edu {
   grid-area: edu;
+  background-color: rgba(153, 161, 156, 0.74);
 }
 
 .profile-exp h2,
@@ -455,7 +459,7 @@ button {
 
 /* Posts Page */
 .post-form .post-form-header {
-  background: var(--primary-color);
+  background: rgb(1, 104, 1);
   padding: 0.5rem;
 }
 
@@ -464,6 +468,12 @@ button {
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
   align-items: center;
+
+  border: 1px solid green;
+
+  margin-bottom: 2rem;
+  position: relative;
+  left: 2%;
 }
 
 .post > div:first-child {
@@ -471,21 +481,24 @@ button {
 }
 
 .post img {
-  width: 100px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
 .post .comment-count {
-  background: var(--light-color);
-  color: var(--primary-color);
+  background: rgb(196, 240, 196);
+  color: rgb(1, 104, 1);
   padding: 0.1rem 0.2rem;
   border-radius: 5px;
   font-size: 0.8rem;
 }
 
 .post .post-date {
-  color: #aaa;
+  color: rgb(83, 83, 83);
   font-size: 0.8rem;
   margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 /* Mobile Styles */
@@ -550,11 +563,11 @@ button {
 
   .profile-grid {
     grid-template-areas:
-      'top'
-      'about'
-      'exp'
-      'edu'
-      'github';
+      "top"
+      "about"
+      "exp"
+      "edu"
+      "github";
   }
 
   .profile-about .skills {

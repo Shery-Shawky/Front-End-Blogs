@@ -7,14 +7,21 @@ import { deleteComment } from '../../actions/post';
 
 const CommentItem = ({
   postId,
-  comment: { _id, text, name, avatar, user, date },
+  comment: { _id, text, name, avatar, user, date, image },
   auth,
-  deleteComment
-}) => (
+  deleteComment,
+
+
+
+}) =>
+(
   <div className="post bg-white p-1 my-1">
     <div>
       <Link to={`/profile/${user}`}>
-        <img className="round-img" src={avatar} alt="" />
+
+        {image ? <img className="round-img my-1" src={`http://localhost:4000/api/upload/show/${image}`} alt="" /> :
+          <img className="round-img my-1" src={avatar} alt="" />
+        }
         <h4>{name}</h4>
       </Link>
     </div>
@@ -25,7 +32,7 @@ const CommentItem = ({
         <button
           onClick={() => deleteComment(postId, _id)}
           type="button"
-          className="btn btn-danger"
+          className="btn btn-success"
         >
           <i className="fas fa-times" />
         </button>

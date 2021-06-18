@@ -11,14 +11,20 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
-  showActions
+  showActions,
+
 }) => (
   <div className="post bg-white p-1 my-1">
+    {console.log(_id)}
     <div>
-      <Link to={`/profile/${user}`}>
-        <img className="round-img" src={avatar} alt="" />
+      {user && user.image ? console.log('yes') : console.log('No')}
+      {user && user._id ? <Link to={`/profile/${user._id}`}>
+        {user.image ? <img className="round-img my-1" src={`http://localhost:4000/api/upload/show/${user.image}`} alt="" /> :
+          <img className="round-img my-1" src={avatar} alt="" />
+        }
         <h4>{name}</h4>
-      </Link>
+      </Link> : ''}
+
     </div>
     <div>
       <p className="my-1">{text}</p>
@@ -47,11 +53,11 @@ const PostItem = ({
               <span className="comment-count">{comments.length}</span>
             )}
           </Link>
-          {!auth.loading && user === auth.user._id && (
+          {!auth.loading && user && user._id === auth.user._id && (
             <button
               onClick={() => deletePost(_id)}
               type="button"
-              className="btn btn-danger"
+              className="btn btn-dark"
             >
               <i className="fas fa-times" />
             </button>
@@ -75,9 +81,11 @@ PostItem.propTypes = {
   showActions: PropTypes.bool
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth
-});
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
 
 export default connect(mapStateToProps, { addLike, removeLike, deletePost })(
   PostItem

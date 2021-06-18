@@ -5,15 +5,15 @@ import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
 const initialState = {
-  company:'',
-  location:'',
-  bio:'',
-  status:'',
-  github:'',
-  skills:'',
-  instagram:'',
-  linkedin:'',
-  facebook:''
+  company: '',
+  location: '',
+  bio: '',
+  status: '',
+
+  skills: '',
+  instagram: '',
+  linkedin: '',
+  facebook: ''
 };
 
 const ProfileForm = ({
@@ -47,7 +47,7 @@ const ProfileForm = ({
     location,
     bio,
     status,
-    github,
+
     skills,
     instagram,
     linkedin,
@@ -64,11 +64,8 @@ const ProfileForm = ({
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Edit Your Profile</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Add some changes to your profile
-      </p>
-      <small>* = required field</small>
+      <h1 className="large text-primary text-center">Edit Your Profile</h1>
+
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <select name="status" value={status} onChange={onChange}>
@@ -98,7 +95,7 @@ const ProfileForm = ({
             Could be your own company or one you work for
           </small>
         </div>
- 
+
         <div className="form-group">
           <input
             type="text"
@@ -142,12 +139,12 @@ const ProfileForm = ({
           >
             Add Social Network Links
           </button>
-          <span>Optional</span>
+
         </div>
 
         {displaySocialInputs && (
           <Fragment>
-      
+
 
             <div className="form-group social-input">
               <i className="fab fa-facebook fa-2x" />
@@ -185,7 +182,7 @@ const ProfileForm = ({
           </Fragment>
         )}
 
-        <input type="submit" className="btn btn-primary my-1" />
+        <input type="submit" className="btn btn-primary ml-20" />
         <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
         </Link>

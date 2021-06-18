@@ -9,16 +9,16 @@ const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
-
+  console.log(posts);
   return (
     <Fragment>
-      <h1 className="large text-primary">Posts</h1>
-      <p className="lead">
+      <h1 className="large text-primary text-center">Posts</h1>
+      {/* <p className="lead text-center ">
         <i className="fas fa-user" /> Welcome to the community
-      </p>
+      </p> */}
       <PostForm />
       <div className="posts">
-        {posts.map((post) => (
+        {posts && posts.map((post) => (
           <PostItem key={post._id} post={post} />
         ))}
       </div>

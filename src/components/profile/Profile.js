@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,11 +8,14 @@ import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import { getProfileById } from '../../actions/profile';
+import { Upload_img } from '../../actions/image'
 
-const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
+const Profile = ({ getProfileById, profile: { profile }, auth, match, Upload_img }) => {
+
   useEffect(() => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
+  const [img_upload, Setimg_upload] = useState('');
 
   return (
     <Fragment>
@@ -20,22 +23,26 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <Link to="/profiles" className="btn btn-light">
-            Back To Profiles
-          </Link>
-          {auth.isAuthenticated &&
-            auth.loading === false &&
-            auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="btn btn-dark">
-                Edit Profile
-              </Link>
+          {auth && auth.user &&
+            <Fragment> {auth.isAuthenticated && auth.loading === false && auth.user._id === profile.user._id && (
+              <Fragment>  <form className="form my-1" onSubmit={e => {
+                e.preventDefault();
+                Upload_img(auth.user._id, img_upload)
+              }}>
+                <input className="choose-file" type="file" name="image " onChange={e => Setimg_upload(e)} />
+                <button className="upload btn btn-primary" type="submit" >Upload</button>
+              </form>
+              </Fragment>
             )}
+            </Fragment>}
+
+
           <div className="profile-grid my-1">
             <ProfileTop profile={profile} />
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">
               <h2 className="text-primary">Experience</h2>
-              {profile.experience.length > 0 ? (
+              {profile && profile.experience.length > 0 ? (
                 <Fragment>
                   {profile.experience.map((experience) => (
                     <ProfileExperience
@@ -65,7 +72,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div>
 
-    
+
           </div>
         </Fragment>
       )}
@@ -79,9 +86,9 @@ Profile.propTypes = {
   auth: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  profile: state.profile,
-  auth: state.auth
-});
-
-export default connect(mapStateToProps, { getProfileById })(Profile);
+const mapStateToProps = (state) => (
+  {
+    profile: state.profile,
+    auth: state.auth
+  });
+export default connect(mapStateToProps, { getProfileById, Upload_img })(Profile);

@@ -25,7 +25,7 @@ const Education = ({ education, deleteEducation }) => {
 
   return (
     <Fragment>
-      <h2 className="my-2">Education Credentials</h2>
+      {/* <h2 className="my-2">Education Credentials</h2>
       <table className="table">
         <thead>
           <tr>
@@ -36,7 +36,7 @@ const Education = ({ education, deleteEducation }) => {
           </tr>
         </thead>
         <tbody>{educations}</tbody>
-      </table>
+      </table> */}
     </Fragment>
   );
 };

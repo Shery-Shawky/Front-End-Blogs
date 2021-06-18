@@ -28,12 +28,7 @@ const AddEducation = ({ addEducation, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Add Your Education</h1>
-      <p className="lead">
-        <i className="fas fa-code-branch" /> Add any school or bootcamp that you
-        have attended
-      </p>
-      <small>* = required field</small>
+      <h1 className="large text-primary text-center">Add Your Education</h1>
       <form
         className="form"
         onSubmit={e => {
@@ -61,23 +56,11 @@ const AddEducation = ({ addEducation, history }) => {
             required
           />
         </div>
-        <div className="form-group">
+        <div className="form-group text-center">
           <h4>From Date</h4>
           <input type="date" name="from" value={from} onChange={onChange} />
         </div>
-        <div className="form-group">
-          <p>
-            <input
-              type="checkbox"
-              name="current"
-              checked={current}
-              value={current}
-              onChange={() => setFormData({ ...formData, current: !current })}
-            />{' '}
-            Current School
-          </p>
-        </div>
-        <div className="form-group">
+        <div className="form-group text-center">
           <h4>To Date</h4>
           <input
             type="date"

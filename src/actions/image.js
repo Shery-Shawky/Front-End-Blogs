@@ -1,4 +1,5 @@
-import {IMAGE_USER, AUTH_ERROR} from './types'
+import {IMAGE_USER, AUTH_ERROR,USER_LOADED,GET_PROFILE} from './types'
+import axios from 'axios'
 
 export const Upload_img=(userid,img_upload)=>async dispatch=>{
 
@@ -17,11 +18,14 @@ if(img_upload){
         const res=await axios.post(`/api/upload/user/${userid}`,formData);
     
     
-               dispatch({
+            dispatch({
             type:IMAGE_USER,
             payload:res.data
         });
-
+        dispatch({
+            type:USER_LOADED
+        })
+     
     } catch (err) {
    
         dispatch({

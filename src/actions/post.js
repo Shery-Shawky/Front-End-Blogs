@@ -13,6 +13,7 @@ import {
 
 // Get posts
 export const getPosts = () => async dispatch => {
+
   try {
     const res = await api.get('/posts');
 
@@ -20,10 +21,13 @@ export const getPosts = () => async dispatch => {
       type: GET_POSTS,
       payload: res.data
     });
+    console.log(res.data);
   } catch (err) {
+    console.log(err);
     dispatch({
       type: POST_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status }
+
     });
   }
 };
